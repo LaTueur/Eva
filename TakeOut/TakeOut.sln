@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeOut.Persistence", "Take
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeOut.WPF", "TakeOut.WPF\TakeOut.WPF.csproj", "{B7301080-6FED-47B2-850A-AFA9B7D92140}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeOut.WinForms", "TakeOut.WinForms\TakeOut.WinForms.csproj", "{50B98B9F-17EB-499A-80BD-82907E9ACD24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B7301080-6FED-47B2-850A-AFA9B7D92140}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7301080-6FED-47B2-850A-AFA9B7D92140}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7301080-6FED-47B2-850A-AFA9B7D92140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50B98B9F-17EB-499A-80BD-82907E9ACD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B98B9F-17EB-499A-80BD-82907E9ACD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B98B9F-17EB-499A-80BD-82907E9ACD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B98B9F-17EB-499A-80BD-82907E9ACD24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
