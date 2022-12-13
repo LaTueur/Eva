@@ -1,0 +1,70 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Labyrinth.View.MainPage"
+             Title="Labirintus">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Grid.Row="0">
+            <Button Text="Betöltés" Command="{Binding LoadCommand}" />
+            <Button Text="Kilépés" Command="{Binding ExitCommand}" />
+            <Button Text="Szünet" Command="{Binding PauseCommand}" />
+            <Button Text="↑" Command="{Binding MoveCommand}" CommandParameter="Up"/>
+            <Button Text="→" Command="{Binding MoveCommand}" CommandParameter="Right"/>
+            <Button Text="↓" Command="{Binding MoveCommand}" CommandParameter="Down"/>
+            <Button Text="←" Command="{Binding MoveCommand}" CommandParameter="Left"/>
+        </StackLayout>
+        <Grid Grid.Row="1"
+            BindableLayout.ItemsSource="{Binding Fields}"
+            RowDefinitions="{Binding RowCountDefinitions}"
+            ColumnDefinitions="{Binding ColumnCountDefinitions}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Image
+                        Grid.Column="{Binding X}"
+                        Grid.Row="{Binding Y}">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding IsVisible}" Value="False">
+                                        <Setter Property="Source" Value="Resources/Images/nothing.png" />
+                                    </DataTrigger>
+                                    <MultiTrigger TargetType="Image">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsVisible}" Value="True" />
+                                            <BindingCondition Binding="{Binding Type}" Value="Player" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Source" Value="Resources/Images/player.png" />
+                                    </MultiTrigger>
+                                    <MultiTrigger TargetType="Image">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsVisible}" Value="True" />
+                                            <BindingCondition Binding="{Binding Type}" Value="Empty" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Source" Value="Resources/Images/floor.png" />
+                                    </MultiTrigger>
+                                    <MultiTrigger TargetType="Image">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsVisible}" Value="True" />
+                                            <BindingCondition Binding="{Binding Type}" Value="Wall" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Source" Value="Resources/Images/wall.png" />
+                                    </MultiTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+
+        </Grid>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Grid.Row="2">
+            <Label Text="Játékidő: " />
+            <Label Text="{Binding GameTime}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
