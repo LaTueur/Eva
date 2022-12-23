@@ -16,7 +16,6 @@ namespace Labyrinth.ViewModel
         #region Properties
 
         public DelegateCommand LoadCommand { get; private set; }
-        public DelegateCommand ExitCommand { get; private set; }
         public DelegateCommand PauseCommand { get; private set; }
         public DelegateCommand MoveCommand { get; private set; }
 
@@ -65,8 +64,6 @@ namespace Labyrinth.ViewModel
 
         public event EventHandler? LoadGame;
 
-        public event EventHandler? ExitGame;
-
         public event EventHandler? PauseGame;
 
         public event EventHandler? RefreshBoard;
@@ -86,7 +83,6 @@ namespace Labyrinth.ViewModel
 
             // parancsok kezelése
             LoadCommand = new DelegateCommand(param => OnLoadGame());
-            ExitCommand = new DelegateCommand(param => OnExitGame());
             PauseCommand = new DelegateCommand(param => OnPauseGame());
             MoveCommand = new DelegateCommand(param =>
                                                   TryToMove( (LabyrinthDirection)Enum.Parse(
@@ -155,11 +151,6 @@ namespace Labyrinth.ViewModel
         private void OnLoadGame()
         {
             LoadGame?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnExitGame()
-        {
-            ExitGame?.Invoke(this, EventArgs.Empty);
         }
         private void OnPauseGame()
         {

@@ -42,9 +42,6 @@
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
-		<MauiAssets Include="Assets\*" />
-		<MauiAssets Include="Labyrinths\*" />
-
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
@@ -58,13 +55,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\MainPage.xaml.cs">
-	    <DependentUpon>MainPage.xaml</DependentUpon>
+	  <Compile Update="View\LoadPage.xaml.cs">
+	    <DependentUpon>LoadPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\MainPage.xaml">
+	  <MauiXaml Update="View\LoadPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

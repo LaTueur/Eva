@@ -10,17 +10,19 @@ namespace Labyrinth
         private readonly ILabyrinthDataAccess _dataAccess;
         private readonly LabyrinthGameModel _gameModel;
         private readonly LabyrinthViewModel _viewModel;
+        private readonly LabyrinthBrowserViewModel _browserModel;
 
         public App()
         {
             InitializeComponent();
 
-            _dataAccess = new LabyrinthFileAccess();
+            _dataAccess = new LabyrinthAssetAccess();
 
             _gameModel = new LabyrinthGameModel(_dataAccess);
             _viewModel = new LabyrinthViewModel(_gameModel);
+            _browserModel = new LabyrinthBrowserViewModel();
 
-            _appShell = new AppShell(_dataAccess, _gameModel, _viewModel)
+            _appShell = new AppShell(_dataAccess, _gameModel, _viewModel, _browserModel)
             {
                 BindingContext = _viewModel
             };
@@ -33,7 +35,7 @@ namespace Labyrinth
             window.Created += (s, e) =>
             {
                 // új játékot indítunk
-                _gameModel.Load(Path.Combine("Resources", "Raw", "Labyrinths", "easy.lab"));
+                _gameModel.Load(Path.Combine("Labyrinths", "easy.lab"));
                 _appShell.StartTimer();
             };
 
